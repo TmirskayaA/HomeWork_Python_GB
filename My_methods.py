@@ -82,3 +82,22 @@ def ToBinary(digit):
         else: binary = str(digit % 2) + binary
         digit //= 2
     return binary
+
+#Массив простых множителей числа
+def MultiplierArray(digit):
+    array = []
+    i = 2
+    while i <= digit:
+        if digit % i == 0:
+            array.append(i)
+            digit //= i
+            i = 2
+        else: i += 1
+    return array
+
+#Массив элементов, которые не повтояются в исходном массиве
+def NonRepeatingElements(array):
+    NREArray = []
+    for i in range(0, len(array)):
+        if array.count(array[i]) == 1: NREArray.append(array[i])
+    return NREArray

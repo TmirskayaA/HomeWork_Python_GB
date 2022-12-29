@@ -8,7 +8,7 @@ number = int(input('Напишите число: '))
 
 import random
 
-file = open('file.txt', 'a')
+file = open('file(4inS2).txt', 'a')
 for i in range(1, number+1):
     a = int(random.randrange(-number, number))
     file.write(f'{a}')
@@ -17,7 +17,7 @@ file.close()
 #Найдите произведение элементов на указанных позициях. // Т.к. нет примера, я ни разу не поняла, что вы хотите увидеть. 
 # Ваше объяснение в семинаре мне тоже не особо помогло, так что как поняла, так поняла.
 
-file = open('file.txt', 'r')
+file = open('file(4inS2).txt', 'r')
 string = file.readline()
 file.close()
 
@@ -46,7 +46,7 @@ answer = str(input('Отчищаем файл? Напишите \"Да\" или 
 while answer != 'Да' and answer != 'Нет':
     answer = str(input('Вы написали что-то не то. Напишите \"Да\" или \"Нет\": '))
 if answer == 'Да': 
-    file = open('file.txt', 'w')
+    file = open('file(4inS2).txt', 'w')
     file.close()
 else: exit()
 

@@ -101,3 +101,76 @@ def NonRepeatingElements(array):
     for i in range(0, len(array)):
         if array.count(array[i]) == 1: NREArray.append(array[i])
     return NREArray
+
+#Рандомный выбор кто будет первым из N игроков.
+def WhoFirst(counter):
+    import random
+    first = int(random.randrange(0, counter))
+    return first
+
+#Игра в конфеты.
+def RivalCandies(counter, nameOne, nameTwo):
+
+    print('Взять можно не больше 28 конфет. Возвращать конфеты в кучку тоже нельзя.')
+
+    queue = WhoFirst(2)
+
+    if queue == 1: print(f'Первым ходит {nameOne}!')
+    else: print(f'Первым ходит {nameTwo}!')
+
+    while counter != 0:
+        if queue == 1:
+            motion = int(input(f'{nameOne}, cколько конфет из {counter} возьмёшь? '))
+            if motion > 28: print('Не жадничай! Больше 28 нельзя. За нарушение правил у тебя -1 ход.')
+            elif motion < 0: print('Возвращать конфеты нельзя! Раз взял, значит ешь. За нарушение правил у тебя -1 ход.')
+            else: counter = counter - motion
+        else: 
+            motion = int(input(f'{nameTwo}, cколько конфет из {counter} возьмёшь? '))
+            if motion > 28: print('Не жадничай! Больше 28 нельзя. За нарушение правил у тебя -1 ход.')
+            elif motion < 0: print('Возвращать конфеты нельзя! Раз взял, значит ешь. За нарушение правил у тебя -1 ход.')
+            else: counter = counter - motion
+        last = queue
+        if queue == 1: queue = 2
+        else: queue = 1
+    return last
+
+#Переводим массив в строку.
+def FromArrayToString(array):
+    string = array[0]
+    for i in range(1, len(array)):
+        string = string + " " + array[i]
+    return string
+
+#Сжимаем строку *прим*111122233 в формат *прим*413223 (работает с буквами).
+def StringCompression(string):
+    array = []
+    cycle = 0
+
+    for i in range(0, len(string)):
+        if i != cycle: continue
+        else:
+            object = string[i]
+            counter = 0
+            for j in range(0, len(string)):
+                if string[j] == object:
+                    counter += + 1
+        endObject = str(counter)+object
+        array.append(endObject)
+        cycle += counter
+    
+    return FromArrayToString(array)
+
+#Восстанавливает строку *прим*413223 в вид *прим*111122233.
+def StringRecovery(string):
+    array = []
+    object = None
+
+    for i in range(0, len(string)-1):
+        if i % 2 != 0: continue
+        else:
+            strObject =  str(string[i+1])
+            result = strObject*int(string[i])
+            array.append(result)
+            object = string[i+1]
+    
+    return FromArrayToString(array)

@@ -174,3 +174,22 @@ def StringRecovery(string):
             object = string[i+1]
     
     return FromArrayToString(array)
+
+#Расчитываем следующий элемент арифметической прогрессии для task_1 S6
+def NextElement(element, counter, difference):
+    return element + (counter - 1) * difference
+
+#Добавляем следующий элемент арифметической прогрессии в массив для task_1 S6
+def ArithmeticProgression(element, difference, quantity):
+    resultArray = [NextElement(element, i, difference) for i in range(1, quantity+1)]
+    return resultArray
+
+#Фильтруем массив по значениям от min до max и оставляем в списке только подходящие элементы.
+def WithinTheInterval(array, minimum, maximum):
+    resultArray = [i for i in range(0, len(array)) if array[i] >= minimum and array[i] <= maximum]
+    return resultArray
+
+#Возведение число в степень с помощью рекурсии.
+def Exponentiation(digit, degree):
+    if (degree == 1): return (digit)
+    else: return (digit * Exponentiation(digit, degree - 1))
